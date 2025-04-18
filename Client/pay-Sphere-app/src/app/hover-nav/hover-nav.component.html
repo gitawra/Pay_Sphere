@@ -1,0 +1,18 @@
+<div class="sidebar" [class.open]="isOpen">
+  <button class="toggle-btn" (click)="toggleSidebar()">
+    <i class="fas" [ngClass]="isOpen ? 'fa-times' : 'fa-bars'"></i>
+  </button>
+  <ul>
+    <li><a routerLink="dashboard/home"><i class="fas fa-home"></i>Home</a></li>
+    <li>
+      <a [routerLink]="isLoggedIn ? '/admin/home' : '/auth/'">
+        <i class="fas fa-book-open-reader"></i> Admin Work Space
+      </a>
+    </li>    <li><a routerLink="#"><i class="fas fa-cog"></i> Settings</a></li>
+    <li *ngIf="isLoggedIn">
+      <a (click)="logout()" style="cursor: pointer;">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </li>
+  </ul>
+</div>

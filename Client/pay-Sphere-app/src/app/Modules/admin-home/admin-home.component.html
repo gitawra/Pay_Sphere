@@ -1,0 +1,16 @@
+
+    <div class="row h-100 w-100 m-0">
+        <!-- Left Section -->
+        <div class="col-md-6 d-flex flex-column align-items-center justify-content-center left-section">
+            <h1>This is a card information form. </h1>
+            <p>Please fill in all the details carefully to ensure accuracy and avoid any mistakes.</p>
+            <p><a [routerLink]="['credit-form']">Open Form</a></p>
+        </div>
+        
+        <!-- Right Section (Login Form) -->
+        <div class="col-md-6 d-flex flex-column align-items-center justify-content-center right-section">
+            <!-- From Uiverse.io by micaelgomestavares --> 
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+

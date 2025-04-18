@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 text-center shadow" style="max-width: 320px; width: 100%;">
+      <h5>Enter 6 digit code</h5>
+      <p class="text-muted mb-3">We have sent the verification code to the <strong title="Sanshay"> hosts </strong>. Please reach out to them for the code.</p>
+  
+      <div class="d-flex justify-content-between mb-3">
+        <input *ngFor="let digit of otpDigits; let i = index"
+               #otpInput
+               type="text"
+               class="form-control text-center mx-1"
+               maxlength="1"
+               [value]="getOtpValue(i)"
+               (input)="onInput($event, i)"
+               (keydown)="onKeyDown($event, i)"
+               style="width: 40px; height: 45px; font-size: 18px;">
+      </div>
+  
+      <button class="btn btn-primary w-100 mb-2" (click)="verifyOtp()">Verify</button>
+      <p class="text-danger fw-bold">Code expires in: {{ formattedTime }}</p>
+      <p class="text-muted mb-0">Didn't receive the code?</p>
+      <a href="#" class="text-primary" (click)="resendCode()">Resend Code</a>
+    </div>
+  </div>
+  

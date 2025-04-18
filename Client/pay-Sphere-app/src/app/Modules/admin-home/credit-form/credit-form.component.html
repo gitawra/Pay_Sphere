@@ -1,0 +1,145 @@
+<div class="container-fluid vh-100 d-flex flex-column">
+  <!-- Top Section (Header) -->
+  <div class="row d-flex align-items-start">
+    <div class="col-12 py-3 text-start">
+      <h1 class="color-custom display-2 fw-bold mb-3 mb-md-5">Welcome, Admin</h1>
+      <h1 class="display-6 fw-bold text-muted">Securely fill in the card information.</h1>
+      <p class="lead text-muted text-justify">
+        <small>
+          Please ensure that all credit and debit card information entered is up-to-date, accurate, and secure. This is essential for a seamless transaction experience. Thank you for your attention to detail in safeguarding your financial information.
+        </small>
+      </p>
+    </div>
+  </div>
+  
+
+  <!-- Horizontal Divider -->
+  <hr class="m-0"/>
+
+  <!-- Main Content Section -->
+  <div class="row flex-grow-1">
+    <!-- Left Column: full-width on small screens, 8 cols on md+ -->
+    <div class="col-12 col-md-10 p-3 border-md-end">
+      <!-- Your left content goes here -->
+      <div class="p-md-3 p-1">
+        <h2>Card Form</h2>
+        <form class="form" [formGroup]="creditForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label class="form-label label">Name</label>
+              <input type="text" class="form-control input" formControlName="name" placeholder="Enter Name" />
+              <div *ngIf="submitted && f['name'].errors" class="text-danger">
+                Name is required
+              </div>
+            </div>
+        
+            <div class="col-md-4 mb-3">
+              <label class="form-label label">Bank Name</label>
+              <input type="text" class="form-control input" formControlName="bank" placeholder="Enter Bank Name" />
+              <div *ngIf="submitted && f['bank'].errors" class="text-danger">Bank selection is required</div>
+            </div>
+        
+            <div class="col-md-4 mb-3">
+              <label class="form-label label">Select Card Type</label>
+              <select class="form-select input" formControlName="cardType">
+                <option value="" disabled>Select Card Type</option>
+                <option value="credit">Credit Card</option>
+                <option value="debit">Debit Card</option>
+              </select>
+              <div *ngIf="submitted && f['cardType'].errors" class="text-danger">
+                Card Type is required
+              </div>
+            </div>
+          </div>
+
+          <!-- Lounges & Petrol Waivers -->
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label class="form-label label">Lounges</label>
+              <input type="text" class="form-control input" formControlName="lounges" placeholder="Enter Lounges" />
+            </div>
+        
+            <div class="col-md-4 mb-3">
+              <label class="form-label label">Petrol Waivers</label>
+              <input type="text" class="form-control input" formControlName="petrolWaivers" placeholder="Enter Petrol Waivers" />
+            </div>
+            <!-- Points -->
+            <div class="col-md-4 mb-3">
+              <label class="form-label label">Points</label>
+              <input type="text" class="form-control input" formControlName="points" placeholder="Enter Points" />
+            </div>
+          </div>
+        
+          
+          <div class="row">
+            <!-- Benefits Section -->
+            <div class="col-md-6 col-lg-4 col-12 mb-3">
+              <label class="form-label label">Benefits</label>
+              <div class="form-group">
+                <label class="form-label">Welcome Gift</label>
+                <textarea class="form-control input" formControlName="welcomeGift" placeholder="Enter Welcome Gift Benefits"></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Milestone Benefits</label>
+                <textarea class="form-control input" formControlName="milestoneBenefits" placeholder="Enter Milestone Benefits"></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Birthday Benefits</label>
+                <textarea class="form-control input" formControlName="birthdayBenefit" placeholder="Enter Birthday Benefits"></textarea>
+              </div>
+            </div>
+            <!-- Charges Section -->
+            <div class="col-md-6 col-lg-4  col-12 mb-3">
+              <label class="form-label label">Charges</label>
+              <div class="form-group">
+                <label class="form-label">Joining Fee</label>
+                <textarea class="form-control input" formControlName="joiningFee" placeholder="Enter Joining Fee Details"></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Annual Fee</label>
+                <textarea class="form-control input" formControlName="annualFee" placeholder="Enter Annual Fee Details"></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Renewal Fee</label>
+                <textarea class="form-control input" formControlName="renewalFee" placeholder="Enter Renewal Fee Details"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+              <!-- Offers Section -->
+              <div class="col-md-6 col-lg-4  col-12 mb-3">
+              <label class="form-label label">Offers</label>
+              <div class="form-group">
+                <label class="form-label">Dining Offers</label>
+                <textarea class="form-control input" formControlName="diningOffers" placeholder="Enter Dining Offers"></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Travel Offers</label>
+                <textarea class="form-control input" formControlName="travelOffers" placeholder="Enter Travel Offers"></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Partner Offers</label>
+                <textarea class="form-control input" formControlName="partnerOffers" placeholder="Enter Partner Offers"></textarea>
+              </div>
+            </div>
+          </div>
+         
+        
+          <div class="d-flex mt-md-3 mt-2">
+            <button type="submit" class="btn btn-outline-primary m-3">Submit</button>
+            <button type="button" (click)="onReset()" class="btn btn-outline-danger m-3">Reset</button>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+
+    <!-- Right Column: full-width on small screens, 4 cols on md+ -->
+    <div class="col-12 col-md-2 p-3">
+      <!-- Your right content goes here -->
+      <h4>Important information and links.</h4>
+    </div>
+  </div>
+</div>
+

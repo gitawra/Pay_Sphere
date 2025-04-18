@@ -1,0 +1,98 @@
+<router-outlet></router-outlet>
+
+<div class="container-fluid p-0">
+    <div class="row h-100 w-100 m-0">
+        <div class="col-md-6 d-flex flex-column justify-content-center left-section">
+            <h1 class="color-custom display-2 fw-bold text-center">PaySphere</h1>
+            <div class="mt-md-5 mt-3 d-flex justify-content-center">
+                <svg viewBox="0 0 240 240" height="240" width="240" class="pl">
+                    <circle
+                      stroke-linecap="round"
+                      stroke-dashoffset="-330"
+                      stroke-dasharray="0 660"
+                      stroke-width="20"
+                      stroke="#000"
+                      fill="none"
+                      r="105"
+                      cy="120"
+                      cx="120"
+                      class="pl__ring pl__ring--a"
+                    ></circle>
+                    <circle
+                      stroke-linecap="round"
+                      stroke-dashoffset="-110"
+                      stroke-dasharray="0 220"
+                      stroke-width="20"
+                      stroke="#000"
+                      fill="none"
+                      r="35"
+                      cy="120"
+                      cx="120"
+                      class="pl__ring pl__ring--b"
+                    ></circle>
+                    <circle
+                      stroke-linecap="round"
+                      stroke-dasharray="0 440"
+                      stroke-width="20"
+                      stroke="#000"
+                      fill="none"
+                      r="70"
+                      cy="120"
+                      cx="85"
+                      class="pl__ring pl__ring--c"
+                    ></circle>
+                    <circle
+                      stroke-linecap="round"
+                      stroke-dasharray="0 440"
+                      stroke-width="20"
+                      stroke="#000"
+                      fill="none"
+                      r="70"
+                      cy="120"
+                      cx="155"
+                      class="pl__ring pl__ring--d"
+                    ></circle>
+                  </svg>                  
+            </div>
+        </div>
+        <div class="col-md-6 d-flex flex-column align-items-center justify-content-center right-section">
+            <h3 class="mb-3 text-white">Who is using?</h3>
+            <button class="btn btn-outline-light btn-custom" (click)="navigateToLogin('admin')">Admin</button>
+            <button class="btn btn-outline-light btn-custom" (click)="navigateToLogin('user')">User</button>
+        </div>
+    </div>
+</div>
+
+<!-- Admin Code Overlay -->
+<div *ngIf="showAdminCodeOverlay"
+     class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex flex-column justify-content-center align-items-center text-white"
+     style="z-index: 1050;">
+
+  <!-- Close button -->
+  <div class="position-absolute top-0 end-0 p-4">
+    <button class="btn btn-outline-light" (click)="closeAdminOverlay()">✕</button>
+  </div>
+
+  <h2 class="mb-4 ">Please enter admin code.</h2>
+
+  <!-- OTP Inputs -->
+  <div class="d-flex gap-3 mb-4">
+    <input *ngFor="let digit of otpDigits;  let i = index"
+           #otpInput
+           type="text"
+           class="form-control text-center fs-2 rounded bg-black border-secondary text-white"
+           maxlength="1"
+           [value]="getOtpValue(i)"
+           (input)="onInput($event, i)"
+           (keydown)="onKeyDown($event, i)"
+           style="width: 80px; height: 80px;">
+  </div>
+
+  <!-- Loader -->
+  <div *ngIf="verifyingAdminCode" class="d-flex flex-column align-items-center">
+    <div class="spinner-border text-light mb-2" role="status"></div>
+    <div class="text-light fw-medium">Please wait...</div>
+  </div>
+</div>
+
+
