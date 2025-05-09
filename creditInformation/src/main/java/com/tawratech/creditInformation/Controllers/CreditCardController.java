@@ -16,7 +16,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/credit-cards")
-@CrossOrigin(origins = "http://localhost:4200") // Allow requests from Angular
 public class CreditCardController   {
     @Autowired
     private CreditCardService creditCardService;

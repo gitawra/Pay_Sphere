@@ -20,7 +20,6 @@ import java.util.concurrent.ConcurrentHashMap;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200") // Allow requests from Angular
 public class AuthenticationController {
 
     // it will store the signup request data temperately till otp is verified.
